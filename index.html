@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Objectifs Ramadan 1447H / 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#c9a84c; --gold-l:#e8d5a0; --gold-d:#8a6d2b;
+  --grn:#1a3c34; --grn-m:#2a5c4a; --grn-l:#3a7c64;
+  --cream:#f5f0e1; --cream-d:#e8dcc4;
+  --ink:#1a1a14; --wht:#fefcf6;
+  --red:#c45c4a; --red-l:rgba(196,92,74,.1);
+  --shadow:0 2px 14px rgba(26,60,52,.07);
+  --r:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Amiri',serif;background:var(--cream);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 25% 0%,rgba(201,168,76,.07),transparent 60%),radial-gradient(ellipse at 75% 100%,rgba(26,60,52,.05),transparent 60%);pointer-events:none}
+
+.c{max-width:700px;margin:0 auto;padding:20px 14px 70px;position:relative;z-index:1}
+
+/* ── Header ── */
+.hdr{text-align:center;padding:32px 16px 20px}
+.hdr-ar{font-family:'Scheherazade New',serif;font-size:2rem;color:var(--gold-d);line-height:1.6}
+.divider{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0}
+.divider i{height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.divider b{width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+.divider s{width:4px;height:4px;background:var(--gold);border-radius:50%;text-decoration:none}
+.hdr h1{font-size:1.75rem;color:var(--grn);font-weight:700;margin:6px 0 2px}
+.hdr .h2{font-family:'Scheherazade New',serif;font-size:1.15rem;color:var(--grn-m)}
+.hdr .h3{font-size:1rem;color:var(--gold-d);font-style:italic;margin-top:2px}
+
+/* ── Add section btn ── */
+.add-sec{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-bottom:20px;padding:10px;border-radius:var(--r);
+  border:1.5px dashed var(--gold);color:var(--gold-d);
+  cursor:pointer;font-size:.92rem;transition:all .2s;background:transparent
+}
+.add-sec:hover{background:rgba(201,168,76,.08);color:var(--grn);border-color:var(--gold-d)}
+
+/* ── Progress ── */
+.prog{background:var(--wht);border:1px solid var(--cream-d);border-radius:var(--r);padding:16px 20px;margin-bottom:22px;box-shadow:var(--shadow)}
+.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.prog-top span{font-size:.92rem;color:var(--grn-m)}
+.prog-top b{font-size:1.05rem;color:var(--grn)}
+.prog-bar{width:100%;height:8px;background:var(--cream);border-radius:4px;overflow:hidden;border:1px solid var(--cream-d)}
+.prog-fill{height:100%;border-radius:4px;transition:width .5s ease;background:linear-gradient(90deg,var(--grn),var(--grn-l),var(--gold))}
+
+/* ── Category ── */
+.cat{margin-bottom:20px}
+.cat-hd{display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--gold-l);margin-bottom:0}
+.cat-ico{
+  width:36px;height:36px;background:linear-gradient(135deg,var(--grn),var(--grn-m));border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  flex-shrink:0;box-shadow:0 2px 8px rgba(26,60,52,.2);cursor:pointer;transition:transform .15s
+}
+.cat-ico:hover{transform:scale(1.08)}
+.cat-info{flex:1;min-width:0}
+.cat-t{font-size:1.1rem;color:var(--grn);font-weight:700}
+.cat-s{font-size:.78rem;color:var(--gold-d);font-style:italic}
+.cat-acts{display:flex;gap:3px;opacity:0;transition:opacity .2s;margin-left:auto}
+.cat:hover .cat-acts{opacity:1}
+
+/* ── Shared small buttons ── */
+.sb{
+  width:26px;height:26px;border-radius:6px;border:1px solid var(--cream-d);
+  background:var(--wht);cursor:pointer;font-size:.78rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:all .15s;color:var(--grn-m)
+}
+.sb:hover{background:var(--cream)}
+.sb.x:hover{background:var(--red-l);color:var(--red)}
+
+/* ── Task list ── */
+.tl{background:var(--wht);border:1px solid var(--cream-d);border-radius:0 0 var(--r) var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.ti{
+  display:flex;align-items:flex-start;gap:11px;
+  padding:11px 14px;border-bottom:1px solid var(--cream);
+  transition:background .2s;cursor:pointer;user-select:none;position:relative
+}
+.ti:hover{background:rgba(201,168,76,.035)}
+.ti.done{background:rgba(26,60,52,.025)}
+.ti.done .tt{text-decoration:line-through;color:#aaa}
+.ti.done .td{color:#c5c5c5}
+.ti.done .tp{opacity:.35}
+
+/* ── Task actions ── */
+.ta{position:absolute;right:6px;top:50%;transform:translateY(-50%);display:flex;gap:2px;opacity:0;transition:opacity .15s}
+.ti:hover .ta{opacity:1}
+.ta .sb{width:22px;height:22px;font-size:.68rem}
+.arrows{display:flex;flex-direction:column;gap:1px}
+.arrows .sb{height:15px;width:22px;border-radius:3px;font-size:.55rem;line-height:1}
+
+/* ── Checkbox ── */
+.ck{flex-shrink:0;margin-top:1px;cursor:pointer}
+.ck input{display:none}
+.ck-box{
+  width:21px;height:21px;border:2px solid var(--gold);border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;background:var(--wht)
+}
+.ck-box::after{content:'✓';font-size:12px;color:var(--wht);opacity:0;transform:scale(0);transition:all .18s cubic-bezier(.4,0,.2,1)}
+.ck input:checked+.ck-box{background:var(--grn);border-color:var(--grn);box-shadow:0 2px 6px rgba(26,60,52,.25)}
+.ck input:checked+.ck-box::after{opacity:1;transform:scale(1)}
+
+.tc{flex:1;min-width:0;padding-right:56px}
+.tt{font-size:.95rem;line-height:1.4}
+.td{font-size:.78rem;color:var(--grn-m);margin-top:2px;font-style:italic;transition:color .2s}
+.tp{
+  font-size:.65rem;padding:2px 6px;border-radius:3px;
+  font-weight:700;letter-spacing:.4px;
+  position:absolute;right:6px;bottom:8px;transition:opacity .2s
+}
+.tp-h{background:rgba(196,92,74,.11);color:var(--red)}
+.tp-m{background:rgba(201,168,76,.14);color:var(--gold-d)}
+.tp-n{background:rgba(26,60,52,.07);color:var(--grn-m)}
+
+/* ── Add task row ── */
+.add-row{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  padding:9px 14px;cursor:pointer;color:var(--gold-d);
+  font-size:.85rem;transition:all .2s;border-top:1px dashed var(--cream-d)
+}
+.add-row:hover{background:rgba(201,168,76,.06);color:var(--grn)}
+
+/* ── Modal ── */
+.mo{position:fixed;inset:0;background:rgba(26,26,20,.45);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center;padding:16px}
+.mo.on{display:flex}
+.md{
+  background:var(--wht);border-radius:16px;padding:26px;
+  max-width:460px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.18);
+  border:1px solid var(--cream-d);max-height:88vh;overflow-y:auto;
+  animation:popIn .2s ease
+}
+@keyframes popIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.md h3{font-size:1.15rem;color:var(--grn);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--gold-l)}
+.mf{margin-bottom:12px}
+.mf label{display:block;font-size:.85rem;color:var(--grn-m);margin-bottom:3px;font-weight:700}
+.mf input,.mf textarea,.mf select{
+  width:100%;font-family:'Amiri',serif;font-size:.93rem;
+  padding:9px 12px;border:1.5px solid var(--cream-d);border-radius:8px;
+  background:var(--cream);color:var(--ink);transition:border .2s
+}
+.mf input:focus,.mf textarea:focus,.mf select:focus{outline:none;border-color:var(--gold)}
+.mf textarea{resize:vertical;min-height:55px}
+.mb{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.btn{
+  font-family:'Amiri',serif;font-size:.9rem;padding:8px 20px;
+  border-radius:8px;border:1.5px solid var(--cream-d);
+  background:var(--wht);color:var(--ink);cursor:pointer;transition:all .2s
+}
+.btn:hover{background:var(--cream)}
+.btn-ok{background:var(--grn);color:var(--wht);border-color:var(--grn)}
+.btn-ok:hover{background:var(--grn-m)}
+.btn-del{background:var(--red);color:var(--wht);border-color:var(--red)}
+.btn-del:hover{opacity:.85}
+
+/* ── Emoji picker ── */
+.eg{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.eo{
+  width:34px;height:34px;border-radius:7px;border:1.5px solid var(--cream-d);
+  background:var(--wht);cursor:pointer;font-size:1.05rem;
+  display:flex;align-items:center;justify-content:center;transition:all .12s
+}
+.eo:hover,.eo.on{border-color:var(--gold);background:var(--gold-l)}
+
+/* ── Calendar Tracker ── */
+.cal{background:var(--wht);border:1px solid var(--cream-d);border-radius:var(--r);padding:20px;margin-bottom:22px;box-shadow:var(--shadow)}
+.cal-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.cal-title h2{font-size:1.1rem;color:var(--grn);font-weight:700}
+.cal-title span{font-size:.82rem;color:var(--gold-d);font-style:italic}
+.cal-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding:8px 12px;background:var(--cream);border-radius:8px}
+.cal-legend-item{display:flex;align-items:center;gap:5px;font-size:.76rem;color:var(--ink)}
+.cal-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+
+.cal-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.cal-day{
+  position:relative;border-radius:10px;border:1.5px solid var(--cream-d);
+  background:var(--wht);cursor:pointer;transition:all .2s;
+  padding:8px 6px 10px;text-align:center;min-height:68px;
+  display:flex;flex-direction:column;align-items:center;gap:2px
+}
+.cal-day:hover{border-color:var(--gold);box-shadow:0 2px 10px rgba(201,168,76,.15)}
+.cal-day.today{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.cal-day.selected{border-color:var(--grn);box-shadow:0 0 0 2px rgba(26,60,52,.25);background:rgba(26,60,52,.03)}
+.cal-day.future{opacity:.4;pointer-events:none}
+.cal-num{font-size:.82rem;font-weight:700;color:var(--grn);line-height:1}
+.cal-hijri{font-family:'Scheherazade New',serif;font-size:.72rem;color:var(--gold-d);line-height:1}
+.cal-dots{display:flex;gap:2px;margin-top:auto;flex-wrap:wrap;justify-content:center}
+.cal-dot{width:7px;height:7px;border-radius:2px;transition:all .2s}
+.cal-dot.off{background:var(--cream-d)}
+.cal-dot.on-h{background:var(--grn)}
+.cal-dot.on-m{background:var(--gold)}
+.cal-dot.on-n{background:var(--grn-l)}
+
+/* Color bar under day */
+.cal-bar{width:100%;height:4px;border-radius:2px;margin-top:3px;background:var(--cream-d);overflow:hidden}
+.cal-bar-fill{height:100%;border-radius:2px;transition:width .3s}
+.bar-perfect{background:linear-gradient(90deg,var(--grn),#2ecc71);width:100%}
+.bar-great{background:linear-gradient(90deg,var(--grn-l),var(--gold));width:100%}
+.bar-good{background:var(--gold);width:100%}
+.bar-partial{background:var(--gold-d);width:100%}
+.bar-none{background:var(--cream-d);width:0%}
+
+/* Day detail panel */
+.cal-detail{
+  background:var(--wht);border:1px solid var(--cream-d);border-radius:var(--r);
+  padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow);
+  display:none;animation:popIn .2s ease
+}
+.cal-detail.open{display:block}
+.cal-detail-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:8px;border-bottom:1.5px solid var(--gold-l)}
+.cal-detail-hd h3{font-size:1rem;color:var(--grn)}
+.cal-detail-hd .close-detail{cursor:pointer;font-size:1.1rem;color:var(--gold-d);background:none;border:none;padding:2px 6px;border-radius:4px}
+.cal-detail-hd .close-detail:hover{background:var(--cream)}
+.daily-item{
+  display:flex;align-items:center;gap:10px;padding:8px 0;
+  border-bottom:1px solid var(--cream);cursor:pointer;user-select:none
+}
+.daily-item:last-child{border-bottom:none}
+.daily-item .ck-box{width:19px;height:19px;border-width:1.5px;font-size:11px}
+.daily-text{font-size:.9rem;flex:1;transition:all .2s}
+.daily-item.done .daily-text{text-decoration:line-through;color:#aaa}
+.daily-add{
+  display:flex;align-items:center;justify-content:center;gap:4px;
+  padding:8px;cursor:pointer;color:var(--gold-d);font-size:.82rem;
+  transition:all .2s;margin-top:4px;border-radius:6px
+}
+.daily-add:hover{background:rgba(201,168,76,.06);color:var(--grn)}
+
+/* Streak counter */
+.streak{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:12px;padding:10px;background:linear-gradient(135deg,rgba(26,60,52,.04),rgba(201,168,76,.06));border-radius:8px}
+.streak-fire{font-size:1.3rem}
+.streak-num{font-size:1.15rem;font-weight:700;color:var(--grn)}
+.streak-label{font-size:.85rem;color:var(--gold-d)}
+
+@media(max-width:500px){
+  .cal-grid{grid-template-columns:repeat(5,1fr);gap:4px}
+  .cal-day{min-height:60px;padding:6px 4px 8px}
+}
+
+/* ── Footer ── */
+.ft{text-align:center;margin-top:34px;padding:18px}
+.ft-ar{font-family:'Scheherazade New',serif;font-size:1.35rem;color:var(--grn);line-height:2}
+.ft-tr{font-size:.86rem;color:var(--gold-d);font-style:italic}
+.ft-ref{font-size:.74rem;color:#aaa;margin-top:4px}
+.ft-moon{font-size:2rem;opacity:.12;margin-top:6px}
+
+/* ── Toast ── */
+.toast{
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(70px);
+  background:var(--grn);color:var(--wht);padding:10px 22px;
+  border-radius:10px;font-size:.88rem;z-index:2000;
+  opacity:0;transition:all .3s ease;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.2)
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:500px){
+  .hdr h1{font-size:1.4rem} .hdr-ar{font-size:1.6rem}
+  .cat-acts,.ta{opacity:1}
+  .c{padding:10px 8px 50px}
+}
+</style>
+</head>
+<body>
+<div class="c">
+  <div class="hdr">
+    <div class="hdr-ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <div class="divider"><i></i><s></s><b></b><s></s><i></i></div>
+    <h1>Objectifs Ramadan</h1>
+    <div class="h2">رمضان ١٤٤٧ هـ</div>
+    <div class="h3">Plan de progression spirituelle — 2026</div>
+  </div>
+
+  <div class="prog">
+    <div class="prog-top"><span>Progression</span><b id="pTxt">0 / 0</b></div>
+    <div class="prog-bar"><div class="prog-fill" id="pFill" style="width:0"></div></div>
+  </div>
+
+  <div id="cal" class="cal"></div>
+  <div id="calDetail" class="cal-detail"></div>
+
+  <div class="divider" style="margin:24px 0 20px"><i></i><s></s><b></b><s></s><i></i></div>
+
+  <div id="app"></div>
+
+  <div class="add-sec" id="addSecBtn">＋ Ajouter une section</div>
+
+  <div class="ft">
+    <div class="divider"><i></i><s></s><b></b><s></s><i></i></div>
+    <div class="ft-ar">شَهْرُ رَمَضَانَ ٱلَّذِىٓ أُنزِلَ فِيهِ ٱلْقُرْءَانُ هُدًۭى لِّلنَّاسِ</div>
+    <div class="ft-tr">« Le mois de Ramadan au cours duquel le Coran a été révélé comme guide pour les gens »</div>
+    <div class="ft-ref">— Al-Baqarah, 2:185</div>
+    <div class="ft-moon">☽</div>
+  </div>
+</div>
+
+<div class="mo" id="modal"><div class="md" id="mdC"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════ DEFAULT DATA ═══════
+const DEF=[
+  {id:"s1",icon:"🕌",title:"As-Salât — La Prière",subtitle:"Perfectionner sa prière pendant Ramadan",tasks:[
+    {id:"t1a",text:"Prier les 5 prières à l'heure",detail:"Ne manquer aucune prière obligatoire pendant tout le mois",p:"high",done:false},
+    {id:"t1b",text:"Prier les 12 raka'at sunan rawatib",detail:"2 avant Fajr, 4 avant et 2 après Dhuhr, 2 après Maghrib, 2 après 'Isha",p:"med",done:false},
+    {id:"t1c",text:"Améliorer sa concentration (khushu') dans la prière",detail:"Comprendre ce qu'on récite, prier sans précipitation",p:"med",done:false},
+  ]},
+  {id:"s2",icon:"📖",title:"Al-Qur'ân — Le Coran",subtitle:"Lecture, mémorisation et méditation",tasks:[
+    {id:"t2a",text:"Terminer au moins 1 khatma pendant Ramadan",detail:"≈ 1 juz' par jour, soit ~20 pages/jour",p:"high",done:false},
+    {id:"t2b",text:"Mémoriser au moins 3 nouvelles sourates",detail:"Choisir des sourates courtes et les réviser chaque jour",p:"med",done:false},
+    {id:"t2c",text:"Méditer sur le sens des versets lus",detail:"Lire le tafsir d'au moins 1 passage par semaine",p:"normal",done:false},
+  ]},
+  {id:"s3",icon:"🤲",title:"Ad-Du'â & Adhkâr",subtitle:"Invocations et rappel d'Allah",tasks:[
+    {id:"t3a",text:"Adhkar du matin après Fajr",detail:"Protection et bénédiction pour la journée",p:"high",done:false},
+    {id:"t3b",text:"Adhkar du soir après 'Asr",detail:"Protection pour la nuit",p:"high",done:false},
+    {id:"t3c",text:"Apprendre le du'a de rupture du jeûne",detail:"ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ",p:"med",done:false},
+    {id:"t3d",text:"Faire du'a avant l'iftar chaque jour",detail:"Moment où l'invocation est exaucée",p:"med",done:false},
+  ]},
+  {id:"s4",icon:"🌙",title:"As-Siyâm — Le Jeûne",subtitle:"Règles et excellence du jeûne",tasks:[
+    {id:"t4a",text:"Prendre le suhoor chaque jour",detail:"Hadith : « Le suhoor est béni, ne le délaissez pas »",p:"high",done:false},
+    {id:"t4b",text:"Rompre le jeûne dès le maghrib",detail:"Avec des dattes ou de l'eau, ne pas retarder",p:"med",done:false},
+    {id:"t4c",text:"Contrôler sa langue pendant le jeûne",detail:"Éviter la médisance, les disputes et les paroles vaines",p:"med",done:false},
+  ]},
+  {id:"s5",icon:"✨",title:"Qiyâm Al-Layl & Tarawih",subtitle:"Prières nocturnes et 10 dernières nuits",tasks:[
+    {id:"t5a",text:"Prier Tarawih chaque soir",detail:"En mosquée si possible, ou à la maison",p:"high",done:false},
+    {id:"t5b",text:"Intensifier les 10 dernières nuits",detail:"Rechercher Laylat Al-Qadr dans les nuits impaires",p:"high",done:false},
+    {id:"t5c",text:"Réciter l'invocation de Laylat Al-Qadr",detail:"اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ العَفْوَ فَاعْفُ عَنِّي",p:"med",done:false},
+  ]},
+  {id:"s6",icon:"⚖️",title:"Az-Zakât & Sadaqah",subtitle:"Générosité et purification des biens",tasks:[
+    {id:"t6a",text:"Calculer et verser sa zakat",detail:"Vérifier si le nisab est atteint et s'acquitter de son obligation",p:"high",done:false},
+    {id:"t6b",text:"Préparer Zakat Al-Fitr avant l'Aïd",detail:"Obligatoire pour chaque membre du foyer",p:"high",done:false},
+    {id:"t6c",text:"Augmenter la sadaqa volontaire",detail:"Le Prophète ﷺ était plus généreux que le vent pendant Ramadan",p:"normal",done:false},
+  ]},
+  {id:"s7",icon:"🧭",title:"Objectifs Personnels",subtitle:"Développement personnel et spirituel",tasks:[
+    {id:"t7a",text:"Faire tawba sincère",detail:"Regret, arrêt, résolution — conditions du repentir valide",p:"high",done:false},
+    {id:"t7b",text:"Réduire le temps d'écran",detail:"Maximiser le temps en 'ibadah",p:"med",done:false},
+    {id:"t7c",text:"Améliorer son caractère (akhlaq)",detail:"Patience, contrôle de la colère, bonne parole",p:"med",done:false},
+    {id:"t7d",text:"Maintenir les liens familiaux (silat ar-rahim)",detail:"Appeler et visiter sa famille régulièrement",p:"med",done:false},
+  ]}
+];
+
+const EMOJIS=["🕌","💧","📖","🤲","⚖️","🌙","✨","🧭","🏠","💎","📿","🕋","🌟","❤️","🔥","📝","🎯","💡","🛡️","⏰"];
+const PL={high:"ESSENTIEL",med:"IMPORTANT",normal:"RECOMMANDÉ"};
+
+let D=[],uid=Date.now();
+const $=s=>document.getElementById(s);
+const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
+const gid=()=>'i'+(uid++);
+
+// ═══════ STORAGE ═══════
+function load(){
+  try{const s=localStorage.getItem('ram26_share');if(s){const p=JSON.parse(s);if(p.length){D=p;return}}}catch(e){}
+  D=JSON.parse(JSON.stringify(DEF));
+}
+function save(){try{localStorage.setItem('ram26_share',JSON.stringify(D))}catch(e){}}
+
+// ═══════ PROGRESS ═══════
+function prog(){
+  let t=0,d=0;
+  D.forEach(c=>c.tasks.forEach(k=>{t++;if(k.done)d++}));
+  $('pFill').style.width=(t?d/t*100:0)+'%';
+  $('pTxt').textContent=d+' / '+t;
+}
+
+// ═══════ RENDER ═══════
+function render(){
+  const app=$('app');
+  app.innerHTML='';
+  D.forEach((cat,ci)=>{
+    let h='';
+    cat.tasks.forEach((t,ti)=>{
+      h+=`<div class="ti${t.done?' done':''}" data-ci="${ci}" data-ti="${ti}">
+        <label class="ck"><input type="checkbox"${t.done?' checked':''} data-a="check" data-ci="${ci}" data-ti="${ti}"><div class="ck-box"></div></label>
+        <div class="tc"><div class="tt">${esc(t.text)}</div>${t.detail?`<div class="td">${esc(t.detail)}</div>`:''}</div>
+        <span class="tp tp-${t.p[0]}">${PL[t.p]}</span>
+        <div class="ta">
+          <div class="arrows">
+            <button class="sb" data-a="t-up" data-ci="${ci}" data-ti="${ti}">▲</button>
+            <button class="sb" data-a="t-dn" data-ci="${ci}" data-ti="${ti}">▼</button>
+          </div>
+          <button class="sb" data-a="t-edit" data-ci="${ci}" data-ti="${ti}">✎</button>
+          <button class="sb x" data-a="t-del" data-ci="${ci}" data-ti="${ti}">✕</button>
+        </div>
+      </div>`;
+    });
+
+    const sec=document.createElement('div');
+    sec.className='cat';
+    sec.innerHTML=`
+      <div class="cat-hd">
+        <div class="cat-ico" data-a="s-edit" data-ci="${ci}">${cat.icon}</div>
+        <div class="cat-info"><div class="cat-t">${esc(cat.title)}</div><div class="cat-s">${esc(cat.subtitle||'')}</div></div>
+        <div class="cat-acts">
+          <button class="sb" data-a="s-up" data-ci="${ci}">▲</button>
+          <button class="sb" data-a="s-dn" data-ci="${ci}">▼</button>
+          <button class="sb" data-a="s-edit" data-ci="${ci}">✎</button>
+          <button class="sb x" data-a="s-del" data-ci="${ci}">✕</button>
+        </div>
+      </div>
+      <div class="tl">${h}<div class="add-row" data-a="t-add" data-ci="${ci}">＋ Ajouter un objectif</div></div>`;
+    app.appendChild(sec);
+  });
+  prog();
+}
+
+// ═══════ EVENT DELEGATION ═══════
+document.addEventListener('click',e=>{
+  // Modal backdrop
+  if(e.target===$('modal')){closeM();return}
+
+  const b=e.target.closest('[data-a]');
+  if(!b)return;
+  e.stopPropagation();
+  const a=b.dataset.a,ci=+b.dataset.ci,ti=+b.dataset.ti;
+
+  switch(a){
+    // Checkbox
+    case'check':D[ci].tasks[ti].done=b.checked;save();render();break;
+
+    // Task actions
+    case't-up':  if(ti>0){[D[ci].tasks[ti],D[ci].tasks[ti-1]]=[D[ci].tasks[ti-1],D[ci].tasks[ti]];save();render()}break;
+    case't-dn':  if(ti<D[ci].tasks.length-1){[D[ci].tasks[ti],D[ci].tasks[ti+1]]=[D[ci].tasks[ti+1],D[ci].tasks[ti]];save();render()}break;
+    case't-edit': editTaskM(ci,ti);break;
+    case't-del':  confirmM("l'objectif",D[ci].tasks[ti].text,()=>{D[ci].tasks.splice(ti,1);save();render();notify('Objectif supprimé')});break;
+    case't-add':  addTaskM(ci);break;
+
+    // Section actions
+    case's-up':   if(ci>0){[D[ci],D[ci-1]]=[D[ci-1],D[ci]];save();render()}break;
+    case's-dn':   if(ci<D.length-1){[D[ci],D[ci+1]]=[D[ci+1],D[ci]];save();render()}break;
+    case's-edit': editSecM(ci);break;
+    case's-del':  confirmM('la section',D[ci].title,()=>{D.splice(ci,1);save();render();notify('Section supprimée')});break;
+
+    // Calendar actions
+    case'cal-day':{
+      const d=+b.dataset.day;
+      selectedDay=selectedDay===d?null:d;
+      renderCal();
+      if(selectedDay)$('calDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
+      break;
+    }
+    case'close-detail':selectedDay=null;$('calDetail').className='cal-detail';renderCal();break;
+    case'toggle-habit':{
+      const d=+b.dataset.day,hid=b.dataset.hid;
+      const k=dayKey(d);if(!CAL[k])CAL[k]={};
+      CAL[k][hid]=!CAL[k][hid];
+      saveCal();renderCal();break;
+    }
+    case'add-habit':openAddHabitM();break;
+    case'del-habit':{
+      const hid=b.dataset.hid;
+      const hab=HABITS.find(h=>h.id===hid);if(!hab)break;
+      confirmM("l'habitude",hab.text,()=>{
+        HABITS=HABITS.filter(h=>h.id!==hid);
+        Object.keys(CAL).forEach(k=>{delete CAL[k][hid]});
+        saveCal();renderCal();notify('Habitude supprimée');
+      });break;
+    }
+  }
+});
+
+// Row click → toggle (but not if clicking actions/checkbox)
+$('app').addEventListener('click',e=>{
+  if(e.target.closest('[data-a]'))return;
+  const row=e.target.closest('.ti');
+  if(!row)return;
+  const ci=+row.dataset.ci,ti=+row.dataset.ti;
+  D[ci].tasks[ti].done=!D[ci].tasks[ti].done;
+  save();render();
+});
+
+// Add section button
+$('addSecBtn').addEventListener('click',addSecM);
+
+// ═══════ MODAL SYSTEM ═══════
+function openM(h){$('mdC').innerHTML=h;$('modal').classList.add('on')}
+function closeM(){$('modal').classList.remove('on')}
+let _cb=null;
+
+function confirmM(label,name,cb){
+  _cb=cb;
+  const n=name.length>45?name.slice(0,45)+'…':name;
+  openM(`<h3>Confirmation</h3>
+    <p style="font-size:.98rem;line-height:1.6;margin-bottom:18px">Supprimer ${label} « <strong>${esc(n)}</strong> » ?</p>
+    <div class="mb"><button class="btn" onclick="closeM()">Annuler</button><button class="btn btn-del" onclick="closeM();_cb&&_cb();_cb=null">Supprimer</button></div>`);
+}
+
+function notify(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}
+
+// ── Emoji picker helper ──
+function emojiH(sel){return EMOJIS.map(e=>`<div class="eo${e===sel?' on':''}" data-e="${e}">${e}</div>`).join('')}
+
+// Delegate emoji clicks inside modal
+$('modal').addEventListener('click',e=>{
+  const eo=e.target.closest('.eo');
+  if(eo){eo.parentElement.querySelectorAll('.eo').forEach(x=>x.classList.remove('on'));eo.classList.add('on')}
+});
+
+// ── Add section modal ──
+function addSecM(){
+  openM(`<h3>＋ Nouvelle section</h3>
+    <div class="mf"><label>Icône</label><div class="eg">${emojiH('🕌')}</div></div>
+    <div class="mf"><label>Titre</label><input id="mT" placeholder="Ex: Al-Qur'ân — Apprentissage"></div>
+    <div class="mf"><label>Sous-titre</label><input id="mS" placeholder="Ex: Mémorisation et récitation"></div>
+    <div class="mb"><button class="btn" onclick="closeM()">Annuler</button><button class="btn btn-ok" onclick="doAddSec()">Ajouter</button></div>`);
+}
+function doAddSec(){
+  const ico=document.querySelector('.eg .on')?.dataset.e||'📌';
+  const t=$('mT').value.trim();if(!t){notify('Titre requis');return}
+  D.push({id:gid(),icon:ico,title:t,subtitle:$('mS').value.trim(),tasks:[]});
+  save();render();closeM();notify('Section ajoutée ✓');
+}
+
+// ── Edit section modal ──
+function editSecM(ci){
+  const c=D[ci];
+  openM(`<h3>✎ Modifier la section</h3>
+    <div class="mf"><label>Icône</label><div class="eg">${emojiH(c.icon)}</div></div>
+    <div class="mf"><label>Titre</label><input id="mT" value="${esc(c.title)}"></div>
+    <div class="mf"><label>Sous-titre</label><input id="mS" value="${esc(c.subtitle||'')}"></div>
+    <div class="mb">
+      <button class="btn btn-del" onclick="closeM();confirmM('la section',D[${ci}].title,()=>{D.splice(${ci},1);save();render();notify('Supprimée')})">Supprimer</button>
+      <button class="btn" onclick="closeM()">Annuler</button>
+      <button class="btn btn-ok" onclick="doSaveSec(${ci})">Enregistrer</button>
+    </div>`);
+}
+function doSaveSec(ci){
+  D[ci].icon=document.querySelector('.eg .on')?.dataset.e||D[ci].icon;
+  D[ci].title=$('mT').value.trim()||D[ci].title;
+  D[ci].subtitle=$('mS').value.trim();
+  save();render();closeM();notify('Section modifiée ✓');
+}
+
+// ── Add task modal ──
+function addTaskM(ci){
+  openM(`<h3>＋ Nouvel objectif</h3>
+    <div class="mf"><label>Objectif</label><input id="mT" placeholder="Ex: Mémoriser Sourate Al-Mulk"></div>
+    <div class="mf"><label>Détail (optionnel)</label><textarea id="mD" placeholder="Ex: 30 versets"></textarea></div>
+    <div class="mf"><label>Priorité</label><select id="mP"><option value="high">Essentiel</option><option value="med" selected>Important</option><option value="normal">Recommandé</option></select></div>
+    <div class="mb"><button class="btn" onclick="closeM()">Annuler</button><button class="btn btn-ok" onclick="doAddTask(${ci})">Ajouter</button></div>`);
+}
+function doAddTask(ci){
+  const t=$('mT').value.trim();if(!t){notify('Objectif requis');return}
+  D[ci].tasks.push({id:gid(),text:t,detail:$('mD').value.trim(),p:$('mP').value,done:false});
+  save();render();closeM();notify('Objectif ajouté ✓');
+}
+
+// ── Edit task modal ──
+function editTaskM(ci,ti){
+  const t=D[ci].tasks[ti];
+  const opts=D.map((s,i)=>`<option value="${i}"${i===ci?' selected':''}>${s.icon} ${esc(s.title)}</option>`).join('');
+  openM(`<h3>✎ Modifier l'objectif</h3>
+    <div class="mf"><label>Objectif</label><input id="mT" value="${esc(t.text)}"></div>
+    <div class="mf"><label>Détail</label><textarea id="mD">${esc(t.detail||'')}</textarea></div>
+    <div class="mf"><label>Priorité</label><select id="mP"><option value="high"${t.p==='high'?' selected':''}>Essentiel</option><option value="med"${t.p==='med'?' selected':''}>Important</option><option value="normal"${t.p==='normal'?' selected':''}>Recommandé</option></select></div>
+    <div class="mf"><label>Déplacer vers</label><select id="mMS">${opts}</select></div>
+    <div class="mb">
+      <button class="btn btn-del" onclick="closeM();confirmM('l\\'objectif',D[${ci}].tasks[${ti}].text,()=>{D[${ci}].tasks.splice(${ti},1);save();render();notify('Supprimé')})">Supprimer</button>
+      <button class="btn" onclick="closeM()">Annuler</button>
+      <button class="btn btn-ok" onclick="doSaveTask(${ci},${ti})">Enregistrer</button>
+    </div>`);
+}
+function doSaveTask(ci,ti){
+  const t=D[ci].tasks[ti];
+  t.text=$('mT').value.trim()||t.text;
+  t.detail=$('mD').value.trim();
+  t.p=$('mP').value;
+  const nci=+$('mMS').value;
+  if(nci!==ci){D[ci].tasks.splice(ti,1);D[nci].tasks.push(t);notify('Déplacé ✓')}
+  else notify('Modifié ✓');
+  save();render();closeM();
+}
+
+// ═══════ DAILY CALENDAR TRACKER ═══════
+const RAM_START=new Date(2026,1,19); // Feb 19 = Day 1 (jeudi)
+const RAM_DAYS=30;
+
+// Default daily habits
+const DEF_HABITS=[
+  {id:"h1",text:"5 prières à l'heure",icon:"🕌"},
+  {id:"h2",text:"12 raka'at sunan rawatib",icon:"📿"},
+  {id:"h3",text:"Tarawih",icon:"🌙"},
+  {id:"h4",text:"Adhkar matin & soir",icon:"🤲"},
+  {id:"h5",text:"Lecture Coran (~1 juz')",icon:"📖"},
+  {id:"h6",text:"Suhoor avant Fajr",icon:"🍽️"},
+];
+
+let CAL={};  // {day1:{h1:true,h2:false,...}, day2:{...}}
+let HABITS=[];
+let selectedDay=null;
+
+function loadCal(){
+  try{
+    const s=localStorage.getItem('ram26_cal');
+    if(s){const p=JSON.parse(s);CAL=p.cal||{};HABITS=p.habits||[];if(HABITS.length)return}
+  }catch(e){}
+  HABITS=JSON.parse(JSON.stringify(DEF_HABITS));
+}
+function saveCal(){
+  try{localStorage.setItem('ram26_cal',JSON.stringify({cal:CAL,habits:HABITS}))}catch(e){}
+}
+
+function dayKey(d){return 'day'+d}
+function getToday(){
+  const now=new Date();
+  const diff=Math.floor((now-RAM_START)/(1000*60*60*24))+1;
+  return Math.max(1,Math.min(diff,RAM_DAYS));
+}
+
+function dayScore(d){
+  const k=dayKey(d),data=CAL[k];
+  if(!data)return 0;
+  const total=HABITS.length;
+  if(!total)return 0;
+  const done=HABITS.filter(h=>data[h.id]).length;
+  return done/total;
+}
+
+function dayClass(score){
+  if(score>=1)return 'perfect';
+  if(score>=.75)return 'great';
+  if(score>=.5)return 'good';
+  if(score>0)return 'partial';
+  return 'none';
+}
+
+function getStreak(){
+  const today=getToday();
+  let streak=0;
+  for(let d=today;d>=1;d--){
+    if(dayScore(d)>=1)streak++;
+    else if(d<today)break;
+    else if(d===today&&dayScore(d)<1)continue; // today not done yet is ok
+  }
+  return streak;
+}
+
+function renderCal(){
+  const today=getToday();
+  const streak=getStreak();
+
+  // Legend
+  let html=`
+    <div class="cal-title">
+      <h2>📅 Suivi Quotidien</h2>
+      <span>${HABITS.length} habitudes / jour</span>
+    </div>
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:linear-gradient(135deg,var(--grn),#2ecc71)"></div>Parfait</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:linear-gradient(135deg,var(--grn-l),var(--gold))"></div>Excellent</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--gold)"></div>Bien</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--gold-d)"></div>Partiel</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--cream-d)"></div>Vide</div>
+    </div>
+    <div class="cal-grid">`;
+
+  for(let d=1;d<=RAM_DAYS;d++){
+    const date=new Date(RAM_START);
+    date.setDate(date.getDate()+d-1);
+    const isToday=d===today;
+    const isSelected=d===selectedDay;
+    const score=dayScore(d);
+    const cls=dayClass(score);
+    const dayNames=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+    const dayName=dayNames[date.getDay()];
+    const pct=Math.round(score*100);
+
+    html+=`<div class="cal-day${isToday?' today':''}${isSelected?' selected':''}" data-a="cal-day" data-day="${d}">
+      <div class="cal-hijri">${d}</div>
+      <div class="cal-num">${dayName} ${date.getDate()}/${date.getMonth()+1}</div>
+      <div class="cal-bar"><div class="cal-bar-fill bar-${cls}"></div></div>
+      ${pct>0?`<div style="font-size:.6rem;color:var(--grn-m);font-weight:700;margin-top:1px">${pct}%</div>`:''}
+    </div>`;
+  }
+
+  html+=`</div>`;
+
+  // Streak
+  if(streak>0){
+    html+=`<div class="streak">
+      <span class="streak-fire">🔥</span>
+      <span class="streak-num">${streak}</span>
+      <span class="streak-label">jour${streak>1?'s':''} parfait${streak>1?'s':''} d'affilée</span>
+    </div>`;
+  }
+
+  // Add habit button
+  html+=`<div class="daily-add" data-a="add-habit" style="margin-top:10px">＋ Ajouter une habitude quotidienne</div>`;
+
+  $('cal').innerHTML=html;
+
+  // Render detail panel if a day is selected
+  if(selectedDay)renderDetail(selectedDay);
+  else $('calDetail').className='cal-detail';
+}
+
+function renderDetail(d){
+  const k=dayKey(d);
+  if(!CAL[k])CAL[k]={};
+  const data=CAL[k];
+  const date=new Date(RAM_START);
+  date.setDate(date.getDate()+d-1);
+  const score=dayScore(d);
+  const pct=Math.round(score*100);
+
+  const dayNames=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const monthNames=['Jan','Fév','Mar','Avr','Mai','Juin','Juil','Août','Sep','Oct','Nov','Déc'];
+
+  let h=`<div class="cal-detail-hd">
+    <h3>Jour ${d} — ${dayNames[date.getDay()]} ${date.getDate()} ${monthNames[date.getMonth()]}</h3>
+    <button class="close-detail" data-a="close-detail">✕</button>
+  </div>
+  <div style="margin-bottom:10px;padding:6px 10px;border-radius:6px;background:${pct>=100?'rgba(46,204,113,.1)':pct>=50?'rgba(201,168,76,.1)':'var(--cream)'};text-align:center">
+    <span style="font-size:.88rem;font-weight:700;color:${pct>=100?'#27ae60':pct>=50?'var(--gold-d)':'var(--grn-m)'}">${pct}% complété</span>
+  </div>`;
+
+  HABITS.forEach(hab=>{
+    const done=!!data[hab.id];
+    h+=`<div class="daily-item${done?' done':''}" data-a="toggle-habit" data-day="${d}" data-hid="${hab.id}">
+      <label class="ck" style="pointer-events:none"><input type="checkbox"${done?' checked':''}><div class="ck-box"></div></label>
+      <span style="font-size:1rem">${hab.icon}</span>
+      <span class="daily-text">${esc(hab.text)}</span>
+      <button class="sb x" data-a="del-habit" data-hid="${hab.id}" style="width:20px;height:20px;font-size:.6rem" title="Supprimer">✕</button>
+    </div>`;
+  });
+
+  $('calDetail').innerHTML=h;
+  $('calDetail').className='cal-detail open';
+}
+
+function openAddHabitM(){
+  openM(`<h3>＋ Nouvelle habitude quotidienne</h3>
+    <div class="mf"><label>Habitude</label><input id="mT" placeholder="Ex: Lire 10 pages de Coran"></div>
+    <div class="mf"><label>Icône</label><div class="eg">${['📿','🕌','📖','🤲','🌙','🍽️','💪','⏰','🧘','❤️'].map(e=>`<div class="eo${e==='📿'?' on':''}" data-e="${e}">${e}</div>`).join('')}</div></div>
+    <div class="mb"><button class="btn" onclick="closeM()">Annuler</button><button class="btn btn-ok" onclick="doAddHabit()">Ajouter</button></div>`);
+}
+
+function doAddHabit(){
+  const t=$('mT').value.trim();
+  if(!t){notify('Nom requis');return}
+  const ico=document.querySelector('.eg .on')?.dataset.e||'📿';
+  HABITS.push({id:gid(),text:t,icon:ico});
+  saveCal();renderCal();closeM();notify('Habitude ajoutée ✓');
+}
+
+// ═══════ INIT ═══════
+load();loadCal();render();renderCal();
+</script>
+</body>
+</html>
